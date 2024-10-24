@@ -61,7 +61,7 @@ public class MainClient implements ClientModInitializer {
         });
 
         // set java.awt.headless to false if os is not mac (allows for JFrame guis to be used)
-        if (!MinecraftClient.IS_SYSTEM_MAC) {
+        if (MinecraftClient.IS_SYSTEM_MAC) {
             System.setProperty("java.awt.headless", "false");
             monospace = new Font(Font.MONOSPACED, Font.PLAIN, 10);
             darkWhite = new Color(220, 220, 220);
@@ -439,7 +439,7 @@ public class MainClient implements ClientModInitializer {
             frame.add(buttonClickButton);
             frame.setVisible(true);
         }).width(115).position(5, 185).build();
-        fabricatePacketButton.active = !MinecraftClient.IS_SYSTEM_MAC;
+        fabricatePacketButton.active = MinecraftClient.IS_SYSTEM_MAC;
         screen.addDrawableChild(fabricatePacketButton);
 
         screen.addDrawableChild(ButtonWidget.builder(Text.of("Copy GUI Title JSON"), (button) -> {
